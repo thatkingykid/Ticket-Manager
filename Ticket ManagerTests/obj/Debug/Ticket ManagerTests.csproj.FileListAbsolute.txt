@@ -1,0 +1,11 @@
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\bin\Debug\Ticket ManagerTests.dll
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\bin\Debug\Ticket ManagerTests.pdb
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\bin\Debug\Ticket Manager.exe
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\bin\Debug\Ticket Manager.pdb
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\bin\Debug\Ticket Manager.exe.config
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\obj\Debug\Ticket ManagerTests.csprojAssemblyReference.cache
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\obj\Debug\Ticket ManagerTests.csproj.CoreCompileInputs.cache
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\obj\Debug\Ticket ManagerTests.csproj.CopyComplete
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\obj\Debug\Ticket ManagerTests.dll
+C:\Users\James King\Desktop\ACW Source Code\Ticket ManagerTests\obj\Debug\Ticket ManagerTests.pdb

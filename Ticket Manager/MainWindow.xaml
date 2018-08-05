@@ -1,0 +1,2043 @@
+﻿<Window x:Class="Ticket_Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ticket_Manager"
+        mc:Ignorable="d"
+        Title="Ticket Manager" Height="{x:Static SystemParameters.PrimaryScreenHeight}" Width="{x:Static SystemParameters.PrimaryScreenWidth}">
+    <Grid>
+        <StackPanel x:Name="LoginStack" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+            <StackPanel x:Name="LoginInputStack" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                <StackPanel x:Name="UsernameStack" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Username:" FontSize="20px" Margin="-20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBox x:Name="UsernameBox" AcceptsReturn="False" Width="200px" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
+                </StackPanel>
+                <StackPanel x:Name="PasswordStack" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="Password:" FontSize="20px" Margin="-20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <TextBox x:Name="PasswordBox" AcceptsReturn="False" Width="200px" Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBox>
+                </StackPanel>
+                <Button x:Name="LoginButton" Content="Login" FontSize="20px" Width="60px" Margin="0,10,0,0" Click="LoginButton_Click" ></Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="NavBarPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Width="{x:Static SystemParameters.PrimaryScreenWidth}" Height="50px" Orientation="Horizontal" Background="Gray" Visibility="Visible">
+            <Button x:Name="homeButton" Height="40pt" Width="40pt" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" MouseDoubleClick="homeButton_MouseDoubleClick">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Png's/home.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="bookButton" Height="40pt" Width="40pt" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" MouseDoubleClick="bookButton_MouseDoubleClick">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="/Png's/book.png">
+                    </ImageBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="customerButton" Height="40pt" Width="40pt" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" MouseDoubleClick="customerButton_MouseDoubleClick">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Png's/customer.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="playButton" Height="40pt" Width="40pt" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" MouseDoubleClick="playButton_MouseDoubleClick">
+                <Button.Background>
+                    <ImageBrush Stretch="None" ImageSource="/Png's/play.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
+        <StackPanel x:Name="HomePanel" Margin="0,50,0,0" Visibility="Visible">
+            <TextBlock x:Name="scheduledPlayBlock" Text="Today's Play: Lorem Ipsum, produced by Lorem Ipsum, at 8pm" Margin="25,0,0,0" FontFamily="Segoe" FontStyle="Normal" FontSize="24pt" ></TextBlock>
+            <StackPanel x:Name="HomeHeaderPanel" Orientation="Horizontal">
+                <TextBlock Text="Sales at a Glance:" Margin="25,25,0,0" FontSize="18pt"></TextBlock>
+                <TextBlock Text="The Rest of the Schedule:" Margin="325,25,0,0" FontSize="18pt"></TextBlock>
+                <TextBlock Text="Expiring Gold Members:" Margin="175,25,0,0" FontSize="18pt"></TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="HomeContentPanel" Orientation="Horizontal">
+                <StackPanel x:Name="HSeatingChartStack" Orientation="Vertical" Margin="25,25,0,0">
+                    <StackPanel x:Name="HUESeatingStack" Orientation="Horizontal">
+                        <TextBlock Text="E"></TextBlock>
+                        <TextBlock x:Name="HUE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE6" Text="06" Margin="274,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HUDSeatingStack" Orientation="Horizontal">
+                        <TextBlock Text="D"></TextBlock>
+                        <TextBlock x:Name="HUD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD23" Text="23" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD24" Text="24" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUD25" Text="25" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HUCSeatingStack" Orientation="Horizontal">
+                        <TextBlock Text="C"></TextBlock>
+                        <TextBlock x:Name="HUC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC23" Text="23" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC24" Text="24" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUC25" Text="25" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HUBSeatingStack" Orientation="Horizontal">
+                        <TextBlock Text="B"></TextBlock>
+                        <TextBlock x:Name="HUB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB23" Text="23" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB24" Text="24" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUB25" Text="25" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HUASeatingStack" Orientation="Horizontal">
+                        <TextBlock Text="A"></TextBlock>
+                        <TextBlock x:Name="HUA1" Text="01" Margin="10,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA23" Text="23" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HUA24" Text="24" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Text="Upper Circle" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                    <StackPanel x:Name="HDESeatingStack" Orientation="Horizontal" Margin="25,20,0,0">
+                        <TextBlock Text="E"></TextBlock>
+                        <TextBlock x:Name="HDE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDE23" Text="23" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HDDSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="D"></TextBlock>
+                        <TextBlock x:Name="HDD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDD23" Text="23" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HDCSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                        <TextBlock Text="C"></TextBlock>
+                        <TextBlock x:Name="HDC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDC21" Text="21" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HDBSeatingStack" Orientation="Horizontal" Margin="50,0,0,0">
+                        <TextBlock Text="B"></TextBlock>
+                        <TextBlock x:Name="HDB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB23" Text="23" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB24" Text="24" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB25" Text="25" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB26" Text="26" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB27" Text="27" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB28" Text="28" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HDASeatingStack" Orientation="Horizontal" Margin="70,0,0,0">
+                        <TextBlock Text="A"></TextBlock>
+                        <TextBlock x:Name="HDA10" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA11" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA12" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA13" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA14" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA15" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA16" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA17" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA18" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA19" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA20" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA21" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA22" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA23" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA24" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA25" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA26" Text="17" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HDBBoxStack" Orientation="Horizontal" Margin="40,0,0,0">
+                        <TextBlock Text="B"></TextBlock>
+                        <TextBlock x:Name="HDB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB29" Text="29" Margin="50,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB30" Text="30" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB31" Text="31" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB32" Text="32" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB33" Text="33" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB34" Text="34" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB35" Text="35" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB36" Text="36" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDB37" Text="37" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HDABoxStack" Orientation="Horizontal" Margin="50,0,0,0">
+                        <TextBlock Text="A"></TextBlock>
+                        <TextBlock x:Name="HDA1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA27" Text="27" Margin="35,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA28" Text="28" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA29" Text="29" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA30" Text="30" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA31" Text="31" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA32" Text="32" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA33" Text="33" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA34" Text="34" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HDA35" Text="35" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Text="Dress Circle" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                    <StackPanel x:Name="HSMSeatingStack" Orientation="Horizontal" Margin="40,20,0,0">
+                        <TextBlock Text="M"></TextBlock>
+                        <TextBlock x:Name="HSM1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSM20" Text="20" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSLSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                        <TextBlock Text="L"></TextBlock>
+                        <TextBlock x:Name="HSL1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSL20" Text="20" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSKSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="K"></TextBlock>
+                        <TextBlock x:Name="HSK1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSK22" Text="22" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSJSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="J"></TextBlock>
+                        <TextBlock x:Name="HSJ1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSJ22" Text="22" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSHSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="H"></TextBlock>
+                        <TextBlock x:Name="HSH1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSH22" Text="22" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSGSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="G"></TextBlock>
+                        <TextBlock x:Name="HSG1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSG22" Text="22" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSFSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="F"></TextBlock>
+                        <TextBlock x:Name="HSF1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSF22" Text="22" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSESeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="E"></TextBlock>
+                        <TextBlock x:Name="HSE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSE22" Text="22" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSDSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock Text="D"></TextBlock>
+                        <TextBlock x:Name="HSD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSCSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                        <TextBlock Text="C"></TextBlock>
+                        <TextBlock x:Name="HSC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSBSeatingStack" Orientation="Horizontal" Margin="50,0,0,0">
+                        <TextBlock Text="B"></TextBlock>
+                        <TextBlock x:Name="HSB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel x:Name="HSASeatingStack" Orientation="Horizontal" Margin="60,0,0,0">
+                        <TextBlock Text="A"></TextBlock>
+                        <TextBlock x:Name="HSA1" Text="01" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA11" Text="11" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA12" Text="12" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA13" Text="13" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA14" Text="14" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA15" Text="15" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA16" Text="16" Margin="5,0,0,0"></TextBlock>
+                        <TextBlock x:Name="HSA17" Text="17" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                    <TextBlock Text="Stalls" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                </StackPanel>
+                <StackPanel x:Name="SchedulePlannerStack" Margin="35,35,0,0">
+                    <ListView x:Name="homescheduleListView" Width="400" FontFamily="Segoe" Height="450" FontSize="18pt" Background="WhiteSmoke" MouseDoubleClick="homescheduleListView_MouseDoubleClick">
+                        <ListViewItem xml:space="preserve">Lorem Ipsum, Lorem Ipsum
+tomorrow at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Thursday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Friday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Saturday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Sunday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Monday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Tuesday at 8pm</ListViewItem>
+                    </ListView>
+                </StackPanel>
+                <StackPanel x:Name="ExpiringMembersStack" Margin="35,35,0,0">
+                    <ListView x:Name="expiringMembersListView" Background="WhiteSmoke" FontFamily="Segoe" FontSize="18pt" Width="350" Height="400" MouseDoubleClick="expiringMembersListView_MouseDoubleClick">
+                        <ListViewItem xml:space="preserve">Steve Wozniak
+2 Apple Lane, San Cupertino</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Anna Harper
+49 Mayberry Road, Norwich</ListViewItem>
+                    </ListView>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="BookingPanel" Margin="0,50,0,0" Visibility="Collapsed">
+            <StackPanel x:Name="BookingHeaderPanel" Margin="0,25,0,0" Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe" FontSize="18pt" Text="1) Please select a play:" Margin="25,0,0,0"></TextBlock>
+                <TextBlock FontFamily="Segoe" FontSize="18pt" Text="2) Select seats:" Margin="325,0,0,0"></TextBlock>
+                <TextBlock FontFamily="Segoe" FontSize="18pt" Text="3) Find Customer: " Margin="225,0,0,0"></TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="BookingContentPanel" Margin="25,25,0,0" Orientation="Horizontal">
+                <StackPanel x:Name="BookingScheduleStack" Orientation="Vertical">
+                    <ListView x:Name="bookingListView" Width="400" FontFamily="Segoe" Height="500" FontSize="18pt" Background="WhiteSmoke" MouseDoubleClick="bookingListView_MouseDoubleClick">
+                        <ListViewItem xml:space="preserve">Lorem Ipsum, Lorem Ipsum
+Today at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Tomorrow at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Thursday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Friday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Saturday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Sunday at 8pm</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Monday at 8pm</ListViewItem>
+                    </ListView>
+                </StackPanel>
+                <StackPanel x:Name="BSeatingChartStack" Orientation="Vertical" Margin="25,0,0,0" PreviewMouseDown="BSeatingChartStack_PreviewMouseDown">
+                    <StackPanel x:Name="BUStack">
+                        <StackPanel x:Name="BUESeatingStack" Orientation="Horizontal">
+                            <TextBlock Text="E"></TextBlock>
+                            <TextBlock x:Name="BUE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE6" Text="06" Margin="274,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BUDSeatingStack" Orientation="Horizontal">
+                            <TextBlock Text="D"></TextBlock>
+                            <TextBlock x:Name="BUD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD23" Text="23" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD24" Text="24" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUD25" Text="25" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BUCSeatingStack" Orientation="Horizontal">
+                            <TextBlock Text="C"></TextBlock>
+                            <TextBlock x:Name="BUC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC22" Text="22" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC23" Text="23" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC24" Text="24" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUC25" Text="25" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BUBSeatingStack" Orientation="Horizontal">
+                            <TextBlock Text="B"></TextBlock>
+                            <TextBlock x:Name="BUB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB22" Text="22" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB23" Text="23" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB24" Text="24" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUB25" Text="25" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BUASeatingStack" Orientation="Horizontal">
+                            <TextBlock Text="A"></TextBlock>
+                            <TextBlock x:Name="BUA1" Text="01" Margin="10,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA22" Text="22" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA23" Text="23" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BUA24" Text="24" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="Upper Circle" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                    <StackPanel x:Name="BDStack">
+                        <StackPanel x:Name="BDESeatingStack" Orientation="Horizontal" Margin="25,20,0,0">
+                            <TextBlock Text="E"></TextBlock>
+                            <TextBlock x:Name="BDE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE22" Text="22" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDE23" Text="23" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BDDSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="D"></TextBlock>
+                            <TextBlock x:Name="BDD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDD23" Text="23" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BDCSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                            <TextBlock Text="C"></TextBlock>
+                            <TextBlock x:Name="BDC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDC21" Text="21" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BDBSeatingStack" Orientation="Horizontal" Margin="50,0,0,0">
+                            <TextBlock Text="B"></TextBlock>
+                            <TextBlock x:Name="BDB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB22" Text="22" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB23" Text="23" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB24" Text="24" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB25" Text="25" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB26" Text="26" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB27" Text="27" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB28" Text="28" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BDASeatingStack" Orientation="Horizontal" Margin="70,0,0,0">
+                            <TextBlock Text="A"></TextBlock>
+                            <TextBlock x:Name="BDA10" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA11" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA12" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA13" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA14" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA15" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA16" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA17" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA18" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA19" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA20" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA21" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA22" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA23" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA24" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA25" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA26" Text="17" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BDBBoxStack" Orientation="Horizontal" Margin="40,0,0,0">
+                            <TextBlock Text="B"></TextBlock>
+                            <TextBlock x:Name="BDB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB29" Text="29" Margin="50,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB30" Text="30" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB31" Text="31" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB32" Text="32" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB33" Text="33" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB34" Text="34" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB35" Text="35" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB36" Text="36" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDB37" Text="37" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BDABoxStack" Orientation="Horizontal" Margin="50,0,0,0">
+                            <TextBlock Text="A"></TextBlock>
+                            <TextBlock x:Name="BDA1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA27" Text="27" Margin="35,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA28" Text="28" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA29" Text="29" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA30" Text="30" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA31" Text="31" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA32" Text="32" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA33" Text="33" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA34" Text="34" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BDA35" Text="35" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="Dress Circle" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                    <StackPanel x:Name="BSStack">
+                        <StackPanel x:Name="BSMSeatingStack" Orientation="Horizontal" Margin="40,20,0,0">
+                            <TextBlock Text="M"></TextBlock>
+                            <TextBlock x:Name="BSM1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSM20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSLSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                            <TextBlock Text="L"></TextBlock>
+                            <TextBlock x:Name="BSL1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSL20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSKSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="K"></TextBlock>
+                            <TextBlock x:Name="BSK1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSK22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSJSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="J"></TextBlock>
+                            <TextBlock x:Name="BSJ1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSJ22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSHSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="H"></TextBlock>
+                            <TextBlock x:Name="BSH1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSH22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSGSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="G"></TextBlock>
+                            <TextBlock x:Name="BSG1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSG22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSFSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="F"></TextBlock>
+                            <TextBlock x:Name="BSF1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSF22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSESeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="E"></TextBlock>
+                            <TextBlock x:Name="BSE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSE22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSDSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                            <TextBlock Text="D"></TextBlock>
+                            <TextBlock x:Name="BSD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSCSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                            <TextBlock Text="C"></TextBlock>
+                            <TextBlock x:Name="BSC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSBSeatingStack" Orientation="Horizontal" Margin="50,0,0,0">
+                            <TextBlock Text="B"></TextBlock>
+                            <TextBlock x:Name="BSB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel x:Name="BSASeatingStack" Orientation="Horizontal" Margin="60,0,0,0">
+                            <TextBlock Text="A"></TextBlock>
+                            <TextBlock x:Name="BSA1" Text="01" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA10" Text="10" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA11" Text="11" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA12" Text="12" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA13" Text="13" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA14" Text="14" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA15" Text="15" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA16" Text="16" Margin="5,0,0,0"></TextBlock>
+                            <TextBlock x:Name="BSA17" Text="17" Margin="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="Stalls" FontSize="10pt" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock x:Name="selectedSeatsTextblock" FontSize="12pt" HorizontalAlignment="Center" Margin="0,15,0,0"></TextBlock>
+                </StackPanel>
+                <StackPanel x:Name="BookingCustomerStack" Orientation="Vertical" Margin="25,0,0,0">
+                    <StackPanel x:Name="BNamwSearchStack" Orientation="Horizontal">
+                        <TextBlock FontSize="18pt" Text="Name: "></TextBlock>
+                        <TextBox x:Name="BNameSearchBox" Width="225pt" Margin="20,0,0,0" FontSize="16pt"></TextBox>
+                    </StackPanel>
+                    <StackPanel x:Name="BNoSearchStack" Orientation="Horizontal">
+                        <TextBlock FontSize="18pt" Text="Tel. No: "></TextBlock>
+                        <TextBox x:Name="BNoSearchBox" Width="225pt" Margin="10,0,0,0" FontSize="16pt"></TextBox>
+                    </StackPanel>
+                    <Button x:Name="BCustomerSearchButton" Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualWidth}" Content="Search" Height="25pt" FontSize="16pt" Click="BCustomerSearchButton_Click"></Button>
+                    <TextBlock FontSize="14pt" Text="Or" HorizontalAlignment="Center" Margin="0,5,0,0"></TextBlock>
+                    <StackPanel x:Name="BookingCustomerListStack" Orientation="Vertical">
+                        <ListView x:Name="bookingCustomersListView" Width="400" FontFamily="Segoe" Height="300" FontSize="18pt" Background="WhiteSmoke" Margin="0,25,0,0">
+                            <ListViewItem xml:space="preserve">Lorem Ipsum, Lorem Ipsum
+Today at 8pm</ListViewItem>
+                            <ListViewItem xml:space="preserve" Content="Lorem Ipsum, Lorem Ipsum&#xD;&#xA;Tomorrow at 8pm"/>
+                            <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Thursday at 8pm</ListViewItem>
+                            <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Friday at 8pm</ListViewItem>
+                            <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Saturday at 8pm</ListViewItem>
+                            <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Sunday at 8pm</ListViewItem>
+                            <ListViewItem xml:space="preserve" Margin="0,5,0,0">Lorem Ipsum, Lorem Ipsum
+Monday at 8pm</ListViewItem>
+                        </ListView>
+                    </StackPanel>
+                    <StackPanel x:Name="BookingButtonStack" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,25,0,0">
+                        <Button x:Name="bookingResetButton" Width="60pt" Height="60pt" Click="bookingResetButton_Click">
+                            <TextBlock TextWrapping="Wrap">Cancel + Reset Booking</TextBlock>
+                        </Button>
+                        <Button x:Name="bookingConfirmButton" Width="60pt" Height="60pt" Margin="25,0,0,0" Click="bookingConfirmButton_Click">
+                            <TextBlock TextWrapping="Wrap">Confirm Booking</TextBlock>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="CustomerPanel" Margin="0,50,0,0" Visibility="Collapsed">
+            <StackPanel x:Name="CustomerHeaderPanel" Margin="0,25,0,0" Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe" FontSize="18pt" Text="Select a Customer:" Margin="25,0,0,0"></TextBlock>
+                <TextBlock FontFamily="Segoe" FontSize="18pt" Text="Edit Details:" Margin="425,0,0,0"></TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="CustomerContentPanel" Orientation="Horizontal">
+                <StackPanel x:Name="CustomerCustomerPanel" Orientation="Vertical" Margin="0,25,0,0">
+                    <StackPanel x:Name="CustomerSearchPanel" Orientation="Horizontal" Margin="25,0,0,0">
+                        <TextBlock FontFamily="Segoe" FontSize="16pt" Text="Search:"></TextBlock>
+                        <TextBox x:Name="customerSearchTextbox" Width="150pt" Margin="10,0,0,0" FontSize="16pt"></TextBox>
+                        <ComboBox x:Name="customerSearchComboBox" Width="125" Margin="10,0,0,0" FontSize="16pt">
+                            <ComboBoxItem>Name</ComboBoxItem>
+                            <ComboBoxItem>ID</ComboBoxItem>
+                            <ComboBoxItem>Tel. No</ComboBoxItem>
+                        </ComboBox>
+                        <Button x:Name="customerSearchButton" Width="125" Margin="10,0,0,0" FontSize="16pt" Content="Search" Click="customerSearchButton_Click"></Button>
+                    </StackPanel>
+                    <ListView x:Name="customerListView" Width="400" FontFamily="Segoe" Height="450" FontSize="18pt" Background="WhiteSmoke" MouseDoubleClick="customerListView_MouseDoubleClick">
+                        <ListViewItem>Create New Customer</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Phil Green,
+07234421156</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Ryan Sharples,
+18 Tren Avenue, Blackpool</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Rhys Hodgson,
+07556322131</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Milan Brown,
+13 Dreary Lane, Essex</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Anna Harper,
+49 Mayberry Road</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Ken Stevens
+Sunday at 8pm</ListViewItem>
+                    </ListView>
+                    <StackPanel x:Name="CustomerSearchButtonPanel" Orientation="Horizontal" Margin="25,0,0,0">
+                        <Button x:Name="viewGoldButton" Width="50pt" Height="50pt" Click="viewGoldButton_Click">
+                            <TextBlock TextWrapping="Wrap">View Gold Members</TextBlock>
+                        </Button>
+                        <Button x:Name="viewExpiringButton" Width="50pt" Height="50pt" Margin="10,0,0,0" Click="viewExpiringButton_Click">
+                            <TextBlock TextWrapping="Wrap">View Expiring Members</TextBlock>
+                        </Button>
+                        <ComboBox x:Name="ExpiryMonthComboBox" Width="80pt" Margin="10,0,0,0" Height="20pt">
+                            <ComboBoxItem>January</ComboBoxItem>
+                            <ComboBoxItem>February</ComboBoxItem>
+                            <ComboBoxItem>March</ComboBoxItem>
+                            <ComboBoxItem>April</ComboBoxItem>
+                            <ComboBoxItem>May</ComboBoxItem>
+                            <ComboBoxItem>June</ComboBoxItem>
+                            <ComboBoxItem>July</ComboBoxItem>
+                            <ComboBoxItem>August</ComboBoxItem>
+                            <ComboBoxItem>September</ComboBoxItem>
+                            <ComboBoxItem>October</ComboBoxItem>
+                            <ComboBoxItem>November</ComboBoxItem>
+                            <ComboBoxItem>December</ComboBoxItem>
+                        </ComboBox>
+                        <Button x:Name="addCustomerButton" Width="60pt" Height="60pt" Margin="180,0,0,0" Click="addCustomerButton_Click">
+                            <TextBlock FontSize="13pt" TextWrapping="Wrap">Add Customer</TextBlock>
+                        </Button>
+                        <Button x:Name="deleteCustomerButton" Width="60pt" Height="60pt" Margin="20,0,0,0" Click="deleteCustomerButton_Click">
+                            <TextBlock FontSize="13pt" TextWrapping="Wrap">Delete Customer</TextBlock>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="CustomerEditPanel" Orientation="Vertical" Margin="80,25,0,0">
+                    <StackPanel x:Name="CustomerEditTopLevelPanel" Orientation="Horizontal">
+                        <TextBlock FontSize="16pt" Text="ID"></TextBlock>
+                        <TextBox x:Name="customerIDTextbox" Width="100pt" FontSize="16pt" Margin="10,0,0,0"></TextBox>
+                        <TextBlock FontSize="16pt" Text="Name:" Margin="25,0,0,0"></TextBlock>
+                        <TextBox x:Name="customerNameTextbox" Width="200pt" FontSize="16pt" Margin="10,0,0,0"></TextBox>
+                    </StackPanel>
+                    <StackPanel x:Name="CustomerEditMiddlePanel" Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock FontSize="16pt" Text="Telephone No:"></TextBlock>
+                        <TextBox x:Name="customerTelephoneTextbox" Width="300pt" FontSize="16pt" Margin="10,0,0,0"></TextBox>
+                    </StackPanel>
+                    <StackPanel x:Name="CustomerGoldEditPanel" Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock FontSize="16pt" Text="Is in the Gold Club?"></TextBlock>
+                        <CheckBox x:Name="customerGoldCheckBox" Width="25" Height="25" Margin="5,10,0,0" Click="customerGoldCheckBox_Click"></CheckBox>
+                        <TextBlock FontSize="16pt" Text="Renewal Date:" Margin="30,0,0,0"></TextBlock>
+                        <TextBox x:Name="customerRenewalDateTextBox" Width="150pt" FontSize="16pt" Margin="5,0,0,0"></TextBox>
+                    </StackPanel>
+                    <StackPanel x:Name="CustomerAddressEditPanel" Orientation="Horizontal" Margin="0,15,0,0">
+                        <TextBlock FontSize="16pt" Text="Address:"></TextBlock>
+                        <TextBox x:Name="customerAddressTextBox" Width="350pt" FontSize="16pt" Margin="5,0,0,0"></TextBox>
+                    </StackPanel>
+                    <ListView x:Name="customerBookingsListView" Width="600" FontFamily="Segoe" Height="250" FontSize="18pt" Background="WhiteSmoke" Margin="0,25,0,0" MouseDoubleClick="customerBookingsListView_MouseDoubleClick">
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Godzilla,
+David Icke (Confirmed)</ListViewItem>
+                        <ListViewItem xml:space="preserve" Margin="0,5,0,0">Antigone,
+Sophocles (Unconfirmed)</ListViewItem>
+                    </ListView>
+                    <StackPanel x:Name="customerSavingButtonsPanel" Orientation="Horizontal" Margin="0,15,0,0">
+                        <Button x:Name="customerSaveEditButton" Width="75pt" Height="75pt" Margin="250,0,0,0" Click="customerSaveEditButton_Click">
+                            <TextBlock TextWrapping="Wrap" FontSize="16pt">Save Changes</TextBlock>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="PlayPanel" Margin="0,50,0,0" Visibility="Collapsed">
+            <StackPanel x:Name="PlayHeaderPanel" Margin="25,10,0,0" Orientation="Horizontal">
+                <TextBlock FontFamily="Segoe" FontSize="18pt" Text="Select a Play:"></TextBlock>
+                <TextBlock FontFamily="Segoe" FontSize="18pt" Text="Edit Details:" Margin="480,0,0,0"></TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="PlayContentPanel" Margin="25,15,0,0" Orientation="Horizontal">
+                <StackPanel x:Name="PlaySearchPanel" Orientation="Vertical">
+                    <StackPanel x:Name="PlaySearchButtonPanel" Orientation="Horizontal">
+                        <TextBlock FontSize="16pt">Search:</TextBlock>
+                        <TextBox x:Name="playSearchTextbox" Width="200pt" Margin="10,0,0,0" FontSize="16pt" KeyUp="playSearchTextbox_KeyUp"></TextBox>
+                        <ComboBox x:Name="playSearchComboBox" Width="75pt" Margin="10,0,0,0">
+                            <ComboBoxItem>ID</ComboBoxItem>
+                            <ComboBoxItem>Name</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <ListView x:Name="playSearchListView" Width="400" FontFamily="Segoe" Height="450" FontSize="18pt" Background="WhiteSmoke" Margin="0,25,0,0" MouseDoubleClick="playSearchListView_MouseDoubleClick"/>
+                    <Button x:Name="generateNewsletterButton" Width="75pt" Height="75pt" Margin="-290,0,0,0" Click="generateNewsletterButton_Click">
+                        <TextBlock FontSize="15pt" TextWrapping="Wrap">Create Newsletter</TextBlock>
+                    </Button>
+                </StackPanel>
+                <StackPanel x:Name="PlayDetailsPanel" Orientation="Vertical" Margin="162,0,0,0">
+                    <StackPanel x:Name="PlayDetailsUpperLayerStack" Orientation="Horizontal">
+                        <TextBlock FontSize="16pt" Text="Name:"></TextBlock>
+                        <TextBox x:Name="playNameTextbox" FontSize="16pt" Width="150pt" Margin="10,0,0,0"></TextBox>
+                        <TextBlock FontSize="16pt" Text="Production Company:" Margin="10,0,0,0"></TextBlock>
+                        <TextBox x:Name="playCompanyTextbox" FontSize="16pt" Width="165pt" Margin="10,0,0,0"></TextBox>
+                    </StackPanel>
+                    <StackPanel x:Name="PlayDetailsMiddleLayerStack" Orientation="Horizontal" Margin="0,25,0,0">
+                        <TextBlock FontSize="16pt" Text="Running Period:"></TextBlock>
+                        <ComboBox x:Name="runningPeriodComboBox" Width="120pt" FontSize="16pt" Height="25pt" VerticalAlignment="Top"  Margin="10,0,0,0">
+                            <ComboBoxItem>3 Weeks</ComboBoxItem>
+                            <ComboBoxItem>4 Weeks</ComboBoxItem>
+                            <ComboBoxItem>One-Off</ComboBoxItem>
+                            <ComboBoxItem>Christmas Special</ComboBoxItem>
+                        </ComboBox>
+                        <TextBlock FontSize="16pt" Text="Starting Date:" Margin="15,0,0,0"></TextBlock>
+                        <Calendar x:Name="startingDateCalander" Width="180pt" Margin="-10,0,0,0"></Calendar>
+                    </StackPanel>
+                    <StackPanel x:Name="PlayDetailsLowerLayerStack" Orientation="Horizontal" Margin="0,-100,0,0">
+                        <TextBlock FontSize="16pt" Text="Price Range:"></TextBlock>
+                        <ComboBox x:Name="priceRangeComboBox" Margin="10,0,0,0" FontSize="16pt" Width="230pt" VerticalAlignment="Top">
+                            <ComboBoxItem>Low (£10 U. Circle, £30 D. Circle, £20 Stalls)</ComboBoxItem>
+                            <ComboBoxItem>Mid (£20 U. Circle, £40 D. Circle, £30 Stalls)</ComboBoxItem>
+                            <ComboBoxItem>High (£30 U. Circle, £50 D.Circle, £40 Stalls)</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <TextBlock FontSize="18pt" Text="Seating and Sales:" Margin="0,-60,0,0"></TextBlock>
+                    <StackPanel x:Name="PlaySalesContentStack" Orientation="Horizontal">
+                        <ScrollViewer VerticalScrollBarVisibility="Visible" MaxHeight="350">
+                            <StackPanel x:Name="PSeatingChartStack" Orientation="Vertical" Margin="0,-0,0,0">
+                                <StackPanel x:Name="PUESeatingStack" Orientation="Horizontal" >
+                                    <TextBlock Text="E"></TextBlock>
+                                    <TextBlock x:Name="PUE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE6" Text="06" Margin="274,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PUDSeatingStack" Orientation="Horizontal">
+                                    <TextBlock Text="P"></TextBlock>
+                                    <TextBlock x:Name="PUD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD23" Text="23" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD24" Text="24" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUD25" Text="25" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PUCSeatingStack" Orientation="Horizontal">
+                                    <TextBlock Text="C"></TextBlock>
+                                    <TextBlock x:Name="PUC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC23" Text="23" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC24" Text="24" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUC25" Text="25" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PUBSeatingStack" Orientation="Horizontal">
+                                    <TextBlock Text="B"></TextBlock>
+                                    <TextBlock x:Name="PUB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB23" Text="23" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB24" Text="24" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUB25" Text="25" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PUASeatingStack" Orientation="Horizontal">
+                                    <TextBlock Text="A"></TextBlock>
+                                    <TextBlock x:Name="PUA1" Text="01" Margin="10,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA23" Text="23" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PUA24" Text="24" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="Upper Circle" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                                <StackPanel x:Name="PDESeatingStack" Orientation="Horizontal" Margin="25,20,0,0">
+                                    <TextBlock Text="E"></TextBlock>
+                                    <TextBlock x:Name="PDE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDE23" Text="23" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PDDSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="D"></TextBlock>
+                                    <TextBlock x:Name="PDD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDD23" Text="23" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PDCSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                                    <TextBlock Text="C"></TextBlock>
+                                    <TextBlock x:Name="PDC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDC21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PDBSeatingStack" Orientation="Horizontal" Margin="50,0,0,0">
+                                    <TextBlock Text="B"></TextBlock>
+                                    <TextBlock x:Name="PDB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB23" Text="23" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB24" Text="24" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB25" Text="25" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB26" Text="26" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB27" Text="27" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB28" Text="28" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PDASeatingStack" Orientation="Horizontal" Margin="70,0,0,0">
+                                    <TextBlock Text="A"></TextBlock>
+                                    <TextBlock x:Name="PDA10" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA11" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA12" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA13" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA14" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA15" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA16" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA17" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA18" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA19" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA20" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA21" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA22" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA23" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA24" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA25" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA26" Text="17" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PDBBoxStack" Orientation="Horizontal" Margin="40,0,0,0">
+                                    <TextBlock Text="B"></TextBlock>
+                                    <TextBlock x:Name="PDB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB29" Text="29" Margin="50,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB30" Text="30" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB31" Text="31" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB32" Text="32" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB33" Text="33" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB34" Text="34" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB35" Text="35" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB36" Text="36" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDB37" Text="37" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PDABoxStack" Orientation="Horizontal" Margin="50,0,0,0">
+                                    <TextBlock Text="A"></TextBlock>
+                                    <TextBlock x:Name="PDA1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA27" Text="27" Margin="35,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA28" Text="28" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA29" Text="29" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA30" Text="30" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA31" Text="31" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA32" Text="32" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA33" Text="33" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA34" Text="34" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PDA35" Text="35" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="Dress Circle" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                                <StackPanel x:Name="PSMSeatingStack" Orientation="Horizontal" Margin="40,20,0,0">
+                                    <TextBlock Text="M"></TextBlock>
+                                    <TextBlock x:Name="PSM1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSM20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSLSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                                    <TextBlock Text="L"></TextBlock>
+                                    <TextBlock x:Name="PSL1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSL20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSKSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="K"></TextBlock>
+                                    <TextBlock x:Name="PSK1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSK22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSJSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="J"></TextBlock>
+                                    <TextBlock x:Name="PSJ1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSJ22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSHSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="H"></TextBlock>
+                                    <TextBlock x:Name="PSH1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSH22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSGSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="G"></TextBlock>
+                                    <TextBlock x:Name="PSG1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSG22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSFSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="F"></TextBlock>
+                                    <TextBlock x:Name="PSF1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSF22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSESeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="E"></TextBlock>
+                                    <TextBlock x:Name="PSE1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSE22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSDSeatingStack" Orientation="Horizontal" Margin="25,0,0,0">
+                                    <TextBlock Text="D"></TextBlock>
+                                    <TextBlock x:Name="PSD1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD21" Text="21" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSD22" Text="22" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSCSeatingStack" Orientation="Horizontal" Margin="40,0,0,0">
+                                    <TextBlock Text="C"></TextBlock>
+                                    <TextBlock x:Name="PSC1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC19" Text="19" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSC20" Text="20" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSBSeatingStack" Orientation="Horizontal" Margin="50,0,0,0">
+                                    <TextBlock Text="B"></TextBlock>
+                                    <TextBlock x:Name="PSB1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSB18" Text="18" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel x:Name="PSASeatingStack" Orientation="Horizontal" Margin="60,0,0,0">
+                                    <TextBlock Text="A"></TextBlock>
+                                    <TextBlock x:Name="PSA1" Text="01" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA2" Text="02" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA3" Text="03" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA4" Text="04" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA5" Text="05" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA6" Text="06" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA7" Text="07" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA8" Text="08" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA9" Text="09" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA10" Text="10" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA11" Text="11" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA12" Text="12" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA13" Text="13" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA14" Text="14" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA15" Text="15" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA16" Text="16" Margin="5,0,0,0"></TextBlock>
+                                    <TextBlock x:Name="PSA17" Text="17" Margin="5,0,0,0"></TextBlock>
+                                </StackPanel>
+                                <TextBlock Text="Stalls" FontSize="16pt" HorizontalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </ScrollViewer>
+                        <StackPanel x:Name="PlaySalesDataStack" Orientation="Vertical" Margin="5,25,0,0">
+                            <TextBlock x:Name="UpperCircleBlock" Text="Upper Circle Sales:" FontSize="14pt"></TextBlock>
+                            <TextBlock x:Name="DressCircleBlock" Text="Dress Circle Sales:" FontSize="14pt" Margin="0,2,0,0"></TextBlock>
+                            <TextBlock x:Name="StallBlock" Text="Stall Sales:" FontSize="14pt" Margin="0,2,0,0"></TextBlock>
+                            <TextBlock x:Name="TotalSaleBlock" Text="Total Sales:" FontSize="14pt" Margin="0,2,0,0"></TextBlock>
+                            <StackPanel x:Name="PlayButtonStack" Orientation="Horizontal" Margin="0,150,0,0">
+                                <Button x:Name="cancelPlayButton"  Width="50pt" Height="50pt" Click="cancelPlayButton_Click">
+                                    <TextBlock TextWrapping="Wrap">Cancel Play</TextBlock>
+                                </Button>
+                                <Button x:Name="reportPlayButton"  Width="50pt" Height="50pt" Margin="5,0,0,0" Click="reportPlayButton_Click">
+                                    <TextBlock TextWrapping="Wrap">Produce Sales Report</TextBlock>
+                                </Button>
+                                <Button x:Name="savePlayButton" Width="50pt" Height="50pt" Margin="5,0,0,0" Click="savePlayButton_Click">
+                                    <TextBlock TextWrapping="Wrap">Save Changes</TextBlock>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
